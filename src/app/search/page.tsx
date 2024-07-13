@@ -1,4 +1,6 @@
 import { db } from "@/db"
+import { productsTable } from "@/db/schema"
+import { sql } from "drizzle-orm"
 import { redirect } from "next/navigation"
 
 interface PageProps {
@@ -16,6 +18,9 @@ const Page = async ({ searchParams }: PageProps) => {
     }
 
     let products = await db
+        .select()
+        .from(productsTable)
+        .where(sql`to_tsvector('simple', lower(${productsTable.name}))`)
 
     return (
         <p>Search</p>
