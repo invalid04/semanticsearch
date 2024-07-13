@@ -126,6 +126,10 @@ async function main() {
             imageId,
         })
     })
+
+    products.forEach(async (product) => {
+        await db.insert(productsTable).values(product).onConflictDoNothing()
+    })
 }
 
 function formatFileName(fileName: string): string {
