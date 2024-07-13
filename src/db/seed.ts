@@ -4,6 +4,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { productsTable } from "./schema";
 import { faker } from "@faker-js/faker";
 
+
 dotenv.config()
 
 async function main() {
