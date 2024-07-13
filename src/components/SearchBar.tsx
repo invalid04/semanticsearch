@@ -30,6 +30,9 @@ const SearchBar = () => {
                         if(e.key === "Escape") {
                             inputRef?.current?.blur()
                         }
+                        if (e.key === "Enter") {
+                            search()
+                        }
                     }}
                     ref={inputRef} 
                     className='absolute inset-0 h-full' />
