@@ -21,8 +21,14 @@ const Page = async ({ searchParams }: PageProps) => {
         .select()
         .from(productsTable)
         .where(
-            sql`to_tsvector('simple', lower(${productsTable.name} || ' ' || ${productsTable.description}))`
+            sql`to_tsvector('simple', lower(${productsTable.name} || ' ' || ${
+                productsTable.description
+            })) @@ to_tsquery('simple', lower(${query
+                .trim()
+                .split(' ')
+                .join(' & ')}))`
         )
+        .limit(3)
 
     return (
         <p>Search</p>
