@@ -1,6 +1,6 @@
 'use client'
 
-import { Search } from "lucide-react"
+import { Loader2, Search } from "lucide-react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { useRef, useTransition, useState } from "react"
@@ -43,7 +43,10 @@ const SearchBar = () => {
                     onClick={search}
                     className='absolute right-0 inset-y-0 h-full rounded-l-none'
                 >
-                    
+                    {isSearching 
+                        ? <Loader2 className='h-6 w-6 animate-spin' />
+                        : <Search className='h-6 w-6' />
+                    }
                 </Button>
             </div>
         </div>
