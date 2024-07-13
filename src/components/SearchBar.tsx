@@ -24,6 +24,7 @@ const SearchBar = () => {
         <div className='relative w-full h-14 flex flex-col bg-white'>
             <div className='h-14 relative z-10 rounded-md'>
                 <Input 
+                    disabled={isSearching}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -37,6 +38,7 @@ const SearchBar = () => {
                     ref={inputRef} 
                     className='absolute inset-0 h-full' />
                 <Button
+                    size='sm'
                     onClick={search}
                     className='absolute right-0 inset-y-0 h-full rounded-l-none'
                 >
