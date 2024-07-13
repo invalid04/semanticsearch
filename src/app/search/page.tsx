@@ -1,4 +1,13 @@
-const Page = () => {
+interface PageProps {
+    searchParams: {
+        [key: string]: string | string[] | undefined
+    }
+}
+
+const Page = ({ searchPatams }: PageProps) => {
+
+    const query
+
     return (
         <p>Search</p>
     )
