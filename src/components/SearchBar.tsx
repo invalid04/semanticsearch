@@ -38,11 +38,12 @@ const SearchBar = () => {
                     ref={inputRef} 
                     className='absolute inset-0 h-full' />
                 <Button
+                    disabled={isSearching}
                     size='sm'
                     onClick={search}
                     className='absolute right-0 inset-y-0 h-full rounded-l-none'
                 >
-                    <Search className='h-6 w-6' />
+                    
                 </Button>
             </div>
         </div>
