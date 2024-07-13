@@ -31,7 +31,7 @@ const Page = async ({ searchParams }: PageProps) => {
         .limit(3)
 
     return (
-        <p>Search</p>
+        <pre>{JSON.stringify(products)}</pre>
     )
 }
 
