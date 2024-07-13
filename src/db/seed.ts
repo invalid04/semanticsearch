@@ -126,7 +126,6 @@ async function main() {
             imageId,
         })
     })
-
 }
 
 function formatFileName(fileName: string): string {
@@ -138,3 +137,5 @@ function formatFileName(fileName: string): string {
     )
     return capitalizeWords.join(' ')
 }
+
+main()
