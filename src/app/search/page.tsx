@@ -20,7 +20,9 @@ const Page = async ({ searchParams }: PageProps) => {
     let products = await db
         .select()
         .from(productsTable)
-        .where(sql`to_tsvector('simple', lower(${productsTable.name}))`)
+        .where(
+            sql`to_tsvector('simple', lower(${productsTable.name} || ' ' || ${productsTable.description}))`
+        )
 
     return (
         <p>Search</p>
