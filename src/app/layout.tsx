@@ -45,6 +45,11 @@ export default function RootLayout({
               <h1 className='tracking-tight text-4xl sm:text-6xl font-bold'>
                 Semantic Search
               </h1>
+
+              <div className='mx-auto mt-16 w-full max-w-2xl flex flex-col'>
+                <SearchBar />
+                {children}
+              </div>
             </div>
           </div>
         </div>
