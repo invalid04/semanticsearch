@@ -1,3 +1,4 @@
+import { db } from "@/db"
 import { redirect } from "next/navigation"
 
 interface PageProps {
@@ -6,7 +7,7 @@ interface PageProps {
     }
 }
 
-const Page = ({ searchParams }: PageProps) => {
+const Page = async ({ searchParams }: PageProps) => {
 
     const query = searchParams.query
 
@@ -14,7 +15,7 @@ const Page = ({ searchParams }: PageProps) => {
         return redirect('/')
     }
 
-    
+    let products = await db
 
     return (
         <p>Search</p>
