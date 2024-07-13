@@ -1,4 +1,5 @@
-import { db } from "@/db";
+import { db } from "@/db/index";
+import postgres from "postgres";
 import * as dotenv from 'dotenv'
 import { drizzle } from "drizzle-orm/postgres-js";
 import { productsTable } from "./schema";
@@ -8,6 +9,8 @@ import { faker } from "@faker-js/faker";
 dotenv.config()
 
 async function main() {
+    const queryClient = postgres(process.env.DATABASE_URL!);
+    const db = drizzle(queryClient);
     const products: (typeof productsTable.$inferInsert)[] = []
 
     const productImageIDs = [
