@@ -2,6 +2,7 @@ import { db } from "@/db";
 import * as dotenv from 'dotenv'
 import { drizzle } from "drizzle-orm/postgres-js";
 import { productsTable } from "./schema";
+import { faker } from "@faker-js/faker";
 
 dotenv.config()
 
@@ -116,5 +117,24 @@ async function main() {
           },       
     ]
 
-    
+    productImageIDs.forEach(({ description, imageId }, i) => {
+        products.push({
+            id: (i + 1).toString(),
+            name: formatFileName(imageId),
+            description,
+            price: parseFloat(faker.commerce.price({ min: 40, max: 200 })),
+            imageId,
+        })
+    })
+
+}
+
+function formatFileName(fileName: string): string {
+    const nameWithoutExtension = fileName.replace(/\.\w+$/, '')
+    const words = nameWithoutExtension.split('_')
+
+    const capitalizeWords = words.map(
+        (word) => word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    return capitalizeWords.join(' ')
 }
